@@ -1,0 +1,6 @@
+﻿عملة التداول
+<no tag>
+<no tag>
+<div class="horizontalSpacer">
+<table class="fullWidthTable">
+<thead>

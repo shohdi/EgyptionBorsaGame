@@ -1,0 +1,5 @@
+D:\D\Projects\tfs_Investigation\getBorsaStatistics\getBorsaStatistics\bin\Debug\getBorsaStatistics.exe
+D:\D\Projects\tfs_Investigation\getBorsaStatistics\getBorsaStatistics\bin\Debug\getBorsaStatistics.pdb
+D:\D\Projects\tfs_Investigation\getBorsaStatistics\getBorsaStatistics\obj\Debug\getBorsaStatistics.csprojResolveAssemblyReference.cache
+D:\D\Projects\tfs_Investigation\getBorsaStatistics\getBorsaStatistics\obj\Debug\getBorsaStatistics.exe
+D:\D\Projects\tfs_Investigation\getBorsaStatistics\getBorsaStatistics\obj\Debug\getBorsaStatistics.pdb
