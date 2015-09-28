@@ -172,6 +172,9 @@ namespace getBorsaStatistics
 
     public class borsaModel
         {
+			[DisplayName("الكود")]	
+			public string ruitersCode { get; set; }
+
             [DisplayName("الاسم")]
             public string name { get; set; }
             [DisplayName("متوسط السعر")]
@@ -386,7 +389,9 @@ namespace getBorsaStatistics
         public static object getProperty(string nameOfProperty, List<string> lstPage, Type type, string analysisPath = "analysis\\")
         {
             string strAnalysis = File.ReadAllText(analysisPath + nameOfProperty + ".txt", Encoding.UTF8);
-            List<string> lstAnalysis = strAnalysis.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+			strAnalysis = strAnalysis.Replace ("\r", "");
+
+            List<string> lstAnalysis = strAnalysis.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
             string val =  getValue(lstAnalysis, lstPage);
             if (type == typeof(double))
             {
@@ -563,7 +568,7 @@ namespace getBorsaStatistics
                             }
                             
                             //lst.Add(model);
-                            Console.WriteLine(model.name + "     " + model.currentPrice + "     " + model.profit + "     " + (model.lastProfitGrowFullStocksQuarterCalculated??0.0));
+							Console.WriteLine(model.ruitersCode + "     " + model.currentPrice + "     " + model.profit + "     " + (model.lastProfitGrowFullStocksQuarterCalculated??0.0));
                             //writeModelText(model);
 							lstModels.Add(model);
                             //Thread.Sleep(1000);
@@ -685,8 +690,15 @@ namespace getBorsaStatistics
             sb.AppendLine("<tr>");
             foreach (PropertyInfo pi in pis)
             {
+				string value = (pi.GetValue (borsaModel, null) ?? "").ToString();
+
 				sb.Append("<td style='border:1px solid black;'>");
-                sb.Append(pi.GetValue(borsaModel, null) ?? "");
+			 
+				if (pi.Name == "Link")
+					sb.Append("<a href=\""+ value +"\">");
+                sb.Append(value);
+				if (pi.Name == "Link")
+					sb.Append("</a>");
                 sb.AppendLine("</td>");
             }
             sb.AppendLine("</tr>");
