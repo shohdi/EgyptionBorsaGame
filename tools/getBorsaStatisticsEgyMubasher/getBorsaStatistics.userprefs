@@ -1,9 +1,11 @@
-﻿<Properties StartupItem="getBorsaStatistics/getBorsaStatistics.csproj">
+﻿<Properties StartupItem="getBorsaStatistics/getBorsaStatistics.csproj" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="getBorsaStatistics/Program.cs">
     <Files>
+      <File FileName="getBorsaStatistics/Program.cs" Line="395" Column="1" />
+      <File FileName="getBorsaStatistics/analysisEgypt/change.txt" Line="1" Column="17" />
       <File FileName="getBorsaStatistics/App.config" Line="1" Column="1" />
-      <File FileName="getBorsaStatistics/Program.cs" Line="591" Column="5" />
+      <File FileName="getBorsaStatistics/analysisEgypt/ruitersCode.txt" Line="6" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
