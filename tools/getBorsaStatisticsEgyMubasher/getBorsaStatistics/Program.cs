@@ -179,10 +179,37 @@ namespace getBorsaStatistics
             public string name { get; set; }
             [DisplayName("متوسط السعر")]
             public double currentPrice { get; set; }
+		[DisplayName("مضاعف الربحية")]
+		public double growProfit { get; set; }
+		[DisplayName("مضاعف الربحية على احصائيات السوق المحسوبة")]
+		public double? lastProfitGrowFullStocksCalculated { get {
+				if (profitAnn == 0)
+					return null;
+				else
+					return marketValCalc / profitAnn;
+			} }
+
             [DisplayName("التغير")]
             public string change { get; set; }
            [DisplayName("الحجم")]
             public double size { get; set; }
+		[DisplayName("MubasherLink")]
+		public string MubasherLink { get{ 
+				string current = ruitersCode;
+				if (!string.IsNullOrEmpty (current)) {
+					int index = current.IndexOf (".");
+					if (index < 0)
+						index = current.Length;
+					current = current.Substring (0,index);
+					string link  = "http://www.mubasher.info/markets/EGX/stocks/{0}";
+					link = string.Format (link,current);
+					return link;
+				}
+				return "";
+			
+			} }
+
+
              [DisplayName("قيمة التداول")]
             public double sellBuy { get; set; }
              [DisplayName("فتح")]
@@ -257,8 +284,7 @@ namespace getBorsaStatistics
             public double marketVal { get; set; }
             [DisplayName("القيمة السوقية المحسوبة")]
             public double marketValCalc { get; set; }
-            [DisplayName("مضاعف الربحية")]
-            public double growProfit { get; set; }
+            
             [DisplayName("مضاعف الربحية على آخر صفقة وربحية السهم")]
             public double? lastProfitGrow
             {
@@ -284,13 +310,7 @@ namespace getBorsaStatistics
             }
 
 
-            [DisplayName("مضاعف الربحية على احصائيات السوق المحسوبة")]
-            public double? lastProfitGrowFullStocksCalculated { get {
-                if (profitAnn == 0)
-                    return null;
-                else
-                    return marketValCalc / profitAnn;
-            } }
+            
 
             [DisplayName("مضاعف الربحية على الربع سنوي")]
             public double? lastProfitGrowFullStocksQuarterCalculated
@@ -568,7 +588,7 @@ namespace getBorsaStatistics
                             }
                             
                             //lst.Add(model);
-							Console.WriteLine(model.ruitersCode + "     " + model.currentPrice + "     " + model.profit + "     " + (model.lastProfitGrowFullStocksQuarterCalculated??0.0));
+							Console.WriteLine(model.ruitersCode + "     " + model.currentPrice + "     " + model.profit + "     " + (model.lastProfitGrowFullStocksCalculated??0.0) + model.MubasherLink);
                             //writeModelText(model);
 							lstModels.Add(model);
                             //Thread.Sleep(1000);
